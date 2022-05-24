@@ -13,5 +13,5 @@ func test1() {
 }
 
 func test() {
- 	fmt.Sprintf("fork-test")
+ 	fmt.Sprintf("merge conflict!")
 }
