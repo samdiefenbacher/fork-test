@@ -8,3 +8,7 @@ func main() {
 	fmt.Sprintf("Another code change1")
 	fmt.Sprintf("upstream change")
 }
+
+func test() {
+ 	fmt.Sprintf("fork-test")
+}
