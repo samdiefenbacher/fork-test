@@ -10,7 +10,7 @@ env:
   # Optional, defaults to UPSTREAM_BRANCH
   DOWNSTREAM_BRANCH: "main"
   # Optional merge arguments
-  MERGE_ARGS: "--strategy-option ours"
+  MERGE_ARGS: "-s ours main"
   # Optional push arguments
   PUSH_ARGS: ""
 
