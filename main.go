@@ -4,6 +4,8 @@ import "fmt"
 
 func main() {
 	fmt.Sprintf("fork-test")
+	fmt.Sprintf("code change")
+	fmt.Sprintf("Another code change")
 }
 
 func test1() {
