@@ -12,3 +12,7 @@ func main() {
 func test() {
  	fmt.Sprintf("fork-test123")
 }
+
+func sam() {
+	fmt.Sprintf("sam")
+}
