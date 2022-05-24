@@ -1,4 +1,4 @@
-name: Sync Blockbench Upstream
+name: Sync fork-test Upstream
 
 env:
   # Required, URL to upstream (fork base)
