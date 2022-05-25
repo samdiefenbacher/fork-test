@@ -3,6 +3,8 @@ name: Sync fork-test Upstream
 env:
   # Required, URL to upstream (fork base)
   UPSTREAM_URL: "https://github.com/sam-orevillestudios/fork-test.git"
+   # Workflow Token
+  WORKFLOW_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   # Optional, defaults to main
   UPSTREAM_BRANCH: "main"
   # Optional, defaults to UPSTREAM_BRANCH
@@ -13,29 +15,30 @@ env:
   NAME: "Sam Diefenbacher"
 
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
   workflow_dispatch:
 
 # Jobs
 jobs:
+
   build:
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
       - name: Sync and rebase upstream repository with current repository
         run: |
+          # Set git config email and username 
           git config --global user.email ${{env.EMAIL}}
           git config --global user.name ${{env.NAME}}
+
           # Set upstream url if we don't have one
-          git remote add upstream ${{env.UPSTREAM_URL}}
+          git remote set-url origin ${{env.UPSTREAM_URL}}
+
           # Fetch upstream origin
-          git fetch upstream
+          git fetch upstream/${{env.UPSTREAM_BRANCH}}
+
           # Rebase changse and apply our commits on top
           git rebase upstream/${{env.UPSTREAM_BRANCH}} ${{env.REBASE_ARGS}}
