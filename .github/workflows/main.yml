@@ -37,7 +37,7 @@ jobs:
         run: |
           git remote add upstream ${{env.UPSTREAM_URL}}
           git checkout ${{env.DOWNSTREAM_BRANCH}}
-          git fetch upstream/${{env.UPSTREAM_BRANCH}}
+          git fetch upstream
       - name: Merge to dev
         run: |
           # Checkout dev
