@@ -38,7 +38,7 @@ jobs:
           git remote add upstream ${{env.UPSTREAM_URL}}
 
           # Fetch upstream origin
-          git fetch upstream/${{env.UPSTREAM_BRANCH}}
+          git fetch upstream
 
           # Rebase changse and apply our commits on top
           git rebase upstream/${{env.UPSTREAM_BRANCH}} ${{env.REBASE_ARGS}}
