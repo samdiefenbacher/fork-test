@@ -5,14 +5,17 @@ import "fmt"
 func main() {
 	fmt.Sprintf("fork-test")
 	fmt.Sprintf("code change")
-	fmt.Sprintf("Another code change1")
-	fmt.Sprintf("upstream change")
+	fmt.Sprintf("Another code change")
+}
+
+func test1() {
+	fmt.Sprintf("fork-test1")
 }
 
 func test() {
- 	fmt.Sprintf("fork-test123")
+ 	fmt.Sprintf("merge conflict!")
 }
 
-func sam() {
-	fmt.Sprintf("sam")
+func test1() {
+	fmt.Sprintf("fork-test1")
 }
