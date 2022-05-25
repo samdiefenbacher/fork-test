@@ -9,6 +9,8 @@ env:
   DOWNSTREAM_BRANCH: "main"
   # Optional merge arguments
   REBASE_ARGS: "-Xtheirs"
+  EMAIL: "sam@orevillestudios.com"
+  NAME: "Sam Diefenbacher"
 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
@@ -29,6 +31,8 @@ jobs:
       
       - name: Sync and rebase upstream repository with current repository
         run: |
+          git config --global user.email ${{env.EMAIL}}
+          git config --global user.name ${{env.NAME}}
           # Set upstream url if we don't have one
           git remote add upstream ${{env.UPSTREAM_URL}}
           # Fetch upstream origin
