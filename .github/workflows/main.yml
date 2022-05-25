@@ -35,17 +35,27 @@ jobs:
 
       - name: Pull Github Fork
         run: |
+          # Add upstream incase enviroment doesn't have it configured
           git remote add upstream ${{env.UPSTREAM_URL}}
+          
+          # Checkout sync branch
           git checkout ${{env.DOWNSTREAM_BRANCH}}
+          
+          # Fetcg upstream repo
           git fetch upstream
+          
       - name: Merge to dev
         run: |
           # Fetch
           git fetch
+          
           # Checkout dev
           git checkout dev
           
+          # Configure git email
           git config --global user.email ${{env.EMAIL}}
+          
+          # Configure git name
           git config --global user.name ${{env.NAME}}
           
           # Rebase changse and apply our commits on top
