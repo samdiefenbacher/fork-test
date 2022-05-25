@@ -30,7 +30,7 @@ jobs:
       - name: Sync and rebase upstream repository with current repository
         run: |
           # Set upstream url if we don't have one
-          git remote set-url origin ${{env.UPSTREAM_URL}}
+          git remote set-url upstream ${{env.UPSTREAM_URL}}
           # Fetch upstream origin
           git fetch upstream
           # Rebase changse and apply our commits on top
