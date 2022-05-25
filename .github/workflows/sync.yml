@@ -35,7 +35,7 @@ jobs:
           git config --global user.name ${{env.NAME}}
 
           # Set upstream url if we don't have one
-          git remote set-url origin ${{env.UPSTREAM_URL}}
+          git remote add upstream ${{env.UPSTREAM_URL}}
 
           # Fetch upstream origin
           git fetch upstream/${{env.UPSTREAM_BRANCH}}
