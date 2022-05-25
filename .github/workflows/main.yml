@@ -40,6 +40,8 @@ jobs:
           git fetch upstream
       - name: Merge to dev
         run: |
+          # Fetch
+          git fetch
           # Checkout dev
           git checkout dev
           # Rebase changse and apply our commits on top
