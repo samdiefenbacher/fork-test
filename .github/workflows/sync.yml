@@ -32,6 +32,6 @@ jobs:
           # Set upstream url if we don't have one
           git remote set-url origin ${{env.UPSTREAM_URL}}
           # Fetch upstream origin
-          git fetch upstream/origin
+          git fetch upstream/${{env.UPSTREAM_BRANCH}}
           # Rebase changse and apply our commits on top
           git rebase upstream/${{env.UPSTREAM_BRANCH}} ${{env.REBASE_ARGS}}
