@@ -1,0 +1,47 @@
+name: Sync Upstream
+
+env:
+  # Required, URL to upstream (fork base)
+  UPSTREAM_URL: "https://github.com/sam-orevillestudios/fork-test" 
+  # Optional, defaults to main
+  UPSTREAM_BRANCH: "main"
+  # Optional, defaults to UPSTREAM_BRANCH
+  DOWNSTREAM_BRANCH: "main"
+  # Optional merge arguments
+  REBASE_ARGS: "-Xtheirs"
+  # Git email
+  EMAIL: "samdief1@gmail.com"
+  # Git name
+  NAME: "Sam Diefenbacher"
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Github Fork
+        run: |
+          git remote add upstream ${{env.UPSTREAM_URL}}
+          git checkout ${{env.DOWNSTREAM_BRANCH}}
+          git fetch upstream/${{env.UPSTREAM_BRANCH}}
+      - name: Merge to dev
+        run: |
+          # Checkout dev
+          git checkout dev
+          # Rebase changse and apply our commits on top
+          git rebase ${{env.DOWNSTREAM_BRANCH}} ${{env.REBASE_ARGS}}
+        
