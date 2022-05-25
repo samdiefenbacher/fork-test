@@ -8,7 +8,7 @@ env:
   # Optional, defaults to UPSTREAM_BRANCH
   DOWNSTREAM_BRANCH: "main"
   # Optional merge arguments
-  REBASE_ARGS: "-Xtheirs"
+  REBASE_ARGS: "-Xours"
   # Git email
   EMAIL: "samdief1@gmail.com"
   # Git name
