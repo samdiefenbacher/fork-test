@@ -44,6 +44,10 @@ jobs:
           git fetch
           # Checkout dev
           git checkout dev
+          
+          git config --global user.email ${{env.EMAIL}}
+          git config --global user.name ${{env.NAME}}
+          
           # Rebase changse and apply our commits on top
           git rebase ${{env.DOWNSTREAM_BRANCH}} ${{env.REBASE_ARGS}}
         
